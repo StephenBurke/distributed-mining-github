@@ -6,7 +6,7 @@ def augment_owns(graph, user):
         graph.add_edge(user.login, repo.name, edge_type = 'owns')
     return repos
 
-def augment_owns(graph, repo):
+def augment_stargazers(graph, repo):
     gazers = repo.get_stargazers()
     for stargazer in gazers:
         graph.add_node(stargazer.login, node_type = 'user')
