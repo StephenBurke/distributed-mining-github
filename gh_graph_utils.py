@@ -11,4 +11,4 @@ def augment_stargazers(graph, repo):
     for stargazer in gazers:
         graph.add_node(stargazer.login, node_type = 'user')
         graph.add_edge(stargazer.login, repo.name, edge_type = 'gazes')
-    return repos
+    return gazers
