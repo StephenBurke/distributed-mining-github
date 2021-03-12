@@ -1,9 +1,13 @@
-def augment_owns(graph, user):
+def augment_owns(graph, user, lang=False):
     graph.add_node(user.login, node_type = 'user')
     repos = user.get_repos()
     for repo in repos:
         graph.add_node(repo.name, node_type = 'repo')
         graph.add_edge(user.login, repo.name, edge_type = 'owns')
+        if lang:
+            graph.add_node(repo.language, node_type='lang')
+            graph.add_edge(user.login, repo.language, edge_type='users')
+            graph.add_edge(repo.name, repo.language, edge_type='speaks')
     return repos
 
 def augment_stargazers(graph, repo):
